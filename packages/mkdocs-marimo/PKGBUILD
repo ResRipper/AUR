@@ -1,14 +1,14 @@
-# Maintainer: ResRipper <resripper@connective.link>
+# Maintainer: ResRipper <resripper at connective dot link>
 
-# shellcheck disable=SC2034,SC2148,SC2154
+# shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
-_name=mkdocs_marimo
 pkgname=mkdocs-marimo
+_name="${pkgname//-/_}"
 pkgver=0.2.1
 pkgrel=1
 pkgdesc="A plugin to embed interactive marimo notebooks in your MkDocs documentation."
 arch=(any)
-url='https://marimo-team.github.io/mkdocs-marimo/'
+url='https://github.com/marimo-team/mkdocs-marimo'
 license=('Apache-2.0')
 options=(!debug)
 
@@ -25,15 +25,15 @@ makedepends=(
     'python-wheel'
 )
 
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('9e4cf8005b79856beb3e9db48e7c8fa7f94a5d00c05aa6877f44a173c0ec9bb0')
 
 build() {
-    cd $_name-$pkgver || exit
+    cd "$_name-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd $_name-$pkgver || exit
+    cd "$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
