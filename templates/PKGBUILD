@@ -1,0 +1,27 @@
+# Maintainer: ResRipper <resripper at connective dot link>
+
+# shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
+
+pkgname=
+pkgver=
+pkgrel=1
+pkgdesc=""
+arch=(x86_64)
+url=''
+license=('GPL-3.0-only') # https://spdx.org/licenses/
+options=(!debug)
+
+conflicts=()
+
+makedepends=()
+depends=()
+optdepends=()
+
+source=("${pkgname}_${pkgver}.tar.zst::https://github.com/...")
+b2sums=('')
+
+prepare() {}
+
+build() {}
+
+package() {}
